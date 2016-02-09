@@ -5,7 +5,7 @@ Priority: optional
 Standards-Version: 3.9.2
 Build-Depends: debhelper (>= 9), gcc, g++, automake, autoconf, libtool, make,
  libncurses5-dev, flex, bison, patch, libtool, autoconf,
- libxml2-dev, cmake
+ libxml2-dev, cmake, dkms
 
 Package: wanpipe
 Section: net
