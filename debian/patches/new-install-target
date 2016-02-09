@@ -1,0 +1,60 @@
+Index: wanpipe-7.0.16/Makefile
+===================================================================
+--- wanpipe-7.0.16.orig/Makefile	2016-02-08 15:16:03.000000000 +0300
++++ wanpipe-7.0.16/Makefile	2016-02-08 18:13:22.000000000 +0300
+@@ -82,6 +82,9 @@
+ 	EXTRA_CFLAGS+= -DWANPIPE_64BIT_2G_DMA
+ endif
+ 
++ifndef KMOD_SRC_DIR
++	KMOD_SRC_DIR=/usr/src/wanpipe
++endif
+ 
+ #Local wanpipe includes
+ WINCLUDE=patches/kdrivers/include
+@@ -250,15 +253,18 @@
+ 
+ #Clean utilites and kernel modules
+ .PHONY: clean
+-clean: cleanup_local  clean_util _cleanoldwanpipe
+-	$(MAKE) -C $(KDIR) SUBDIRS=$(WAN_DIR) clean
++clean: cleanup_local  clean_util _cleanoldwanpipe clean_kmod
+ 	$(MAKE) -C api SUBDIRS=$(WAN_DIR) clean
+-	@find patches/kdrivers -name '.*.cmd' | xargs rm -f
+ 	@find . -name 'Module.symver*' | xargs rm -f
+ 	@if [ -e .no_legacy_smg ]; then \
+ 		rm -f .no_legacy_smg; \
+ 	fi
+ 
++.PHONY: clean_kmod
++clean_kmod:
++	$(MAKE) -C $(KDIR) SUBDIRS=$(WAN_DIR) clean
++	@find patches/kdrivers -name '.*.cmd' | xargs rm -f
++	
+ 
+                                     
+ #Clean old wanpipe headers from linux include
+@@ -271,6 +277,9 @@
+ #Check for linux headers
+ .PHONY: _checksrc
+ _checksrc: 
++	true
++
++_checksrc_off:
+ 	@if [ ! -e $(KDIR) ]; then \
+ 		echo "   Error linux headers/source not found: $(KDIR) !"; \
+ 		echo ; \
+@@ -381,6 +390,13 @@
+     fi
+ 	@eval "./patches/rundepmod.sh"	
+ 	
++# Install kernel modules source under /usr/src so dkms can rebuild modules
++# when it is needed
++.PHONY: install_kmod_src
++install_kmod_src:
++	mkdir -p $(INSTALLPREFIX)/${KMOD_SRC_DIR}
++	cp -R Makefile patches $(INSTALLPREFIX)/${KMOD_SRC_DIR}/
++
+ endif
+ 
+ #Compile utilities only

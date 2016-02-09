@@ -1,0 +1,25 @@
+#!/usr/bin/make -f
+
+DEB_VERSION := $(shell dpkg-parsechangelog | egrep '^Version:' | cut -f 2 -d ' ')
+
+%:
+	dh $@ --with dkms
+# --with-quilt
+
+# that is all targets from "all_src" excluding "all_kmod" and "_checksrc" and
+# even "cleanup_local"
+override_dh_auto_build:
+	make all_util all_lib
+
+# all from "install" target except "install_kmod" nd with extra "install_kmod_src"
+override_dh_auto_install:
+	make install_etc install_util install_inc install_kmod_src DESTDIR=$(CURDIR)/debian/tmp/ KMOD_SRC_DIR=/usr/src/wanpipe-$(DEB_VERSION) DOCS_DIR=/usr/share/doc/wanpipe
+
+override_dh_auto_clean:
+	make cleanup_local clean_util
+	rm -f .pbxdir
+
+override_dh_dkms:
+	dh_dkms -V $(DEB_VERSION)
+
+

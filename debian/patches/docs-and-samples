@@ -1,0 +1,31 @@
+Index: wanpipe-7.0.16/Makefile
+===================================================================
+--- wanpipe-7.0.16.orig/Makefile	2016-02-09 11:09:27.000000000 +0300
++++ wanpipe-7.0.16/Makefile	2016-02-09 11:29:41.000000000 +0300
+@@ -85,6 +85,9 @@
+ ifndef KMOD_SRC_DIR
+ 	KMOD_SRC_DIR=/usr/src/wanpipe
+ endif
++ifndef DOCS_DIR
++	DOCS_DIR=/etc/wanpipe
++endif
+ 
+ #Local wanpipe includes
+ WINCLUDE=patches/kdrivers/include
+@@ -483,13 +486,14 @@
+ 	@if [ ! -f $(INSTALLPREFIX)/etc/wanpipe/interfaces ]; then \
+ 		mkdir -p $(INSTALLPREFIX)/etc/wanpipe/interfaces; \
+ 	fi    
+-	@\cp -rf samples $(INSTALLPREFIX)/etc/wanpipe
++	@mkdir -p $(INSTALLPREFIX)${DOCS_DIR}
++	@\cp -rf samples $(INSTALLPREFIX)${DOCS_DIR}/
+ 	@if [ ! -d $(INSTALLPREFIX)/etc/wanpipe/scripts ]; then \
+ 		mkdir -p $(INSTALLPREFIX)/etc/wanpipe/scripts; \
+ 	fi   
+ 	@\cp -rf wan_ec  $(INSTALLPREFIX)/etc/wanpipe/
+ 	@\rm -f $(INSTALLPREFIX)/etc/wanpipe/api/Makefile*
+-	@\cp -rf api  $(INSTALLPREFIX)/etc/wanpipe/
++	@\cp -rf api  $(INSTALLPREFIX)${DOCS_DIR}/
+ 	@\cp -rf scripts  $(INSTALLPREFIX)/etc/wanpipe/
+ 	@\cp -rf util/wan_aftup   $(INSTALLPREFIX)/etc/wanpipe/util/
+ 	@install -D -m 755 samples/wanrouter  $(INSTALLPREFIX)/usr/sbin/wanrouter

@@ -1,0 +1,13 @@
+Index: wanpipe-7.0.16/api/libsangoma/libsangoma-pvt.h
+===================================================================
+--- wanpipe-7.0.16.orig/api/libsangoma/libsangoma-pvt.h	2008-08-01 17:00:00.000000000 +0400
++++ wanpipe-7.0.16/api/libsangoma/libsangoma-pvt.h	2016-02-09 13:40:25.000000000 +0300
+@@ -139,7 +139,7 @@
+ #if defined(__WINDOWS__)
+ 	OutputDebugString(buf);
+ #else
+-	printf(buf);
++	printf("%s", buf);
+ #endif
+ 	va_end(args);
+ }

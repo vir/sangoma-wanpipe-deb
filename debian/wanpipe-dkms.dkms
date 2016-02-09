@@ -1,0 +1,29 @@
+PACKAGE_NAME="wanpipe"
+PACKAGE_VERSION=7.0.16
+MAKE[0]="'make' -C ${dkms_tree}/${PACKAGE_NAME}/${PACKAGE_VERSION}/source all_kmod KVER=$kernelver"
+CLEAN="'make' -C ${dkms_tree}/${PACKAGE_NAME}/${PACKAGE_VERSION}/source clean_kmod"
+BUILT_MODULE_LOCATION[0]="patches/kdrivers/src/net/"
+BUILT_MODULE_LOCATION[1]="patches/kdrivers/src/net/"
+BUILT_MODULE_LOCATION[2]="patches/kdrivers/src/net/"
+BUILT_MODULE_LOCATION[3]="patches/kdrivers/src/net/"
+BUILT_MODULE_LOCATION[4]="patches/kdrivers/src/net/"
+BUILT_MODULE_LOCATION[5]="patches/kdrivers/src/net/"
+BUILT_MODULE_LOCATION[6]="patches/kdrivers/src/net/"
+DEST_MODULE_LOCATION[0]=/extra
+DEST_MODULE_LOCATION[1]=/extra
+DEST_MODULE_LOCATION[2]=/extra
+DEST_MODULE_LOCATION[3]=/extra
+DEST_MODULE_LOCATION[4]=/extra
+DEST_MODULE_LOCATION[5]=/extra
+DEST_MODULE_LOCATION[6]=/extra
+BUILT_MODULE_NAME[0]="wanrouter"
+BUILT_MODULE_NAME[1]="af_wanpipe"
+BUILT_MODULE_NAME[2]="wanec"
+BUILT_MODULE_NAME[3]="wan_aften"
+BUILT_MODULE_NAME[4]="sdladrv"
+BUILT_MODULE_NAME[5]="wanpipe"
+BUILT_MODULE_NAME[6]="wanpipe_syncppp"
+# wanpipe_lip
+# xmtp2km
+REMAKE_INITRD=no
+

@@ -1,0 +1,39 @@
+Source: wanpipe
+Maintainer: Vasily i. Redkin <vir@ctm.ru>
+Section: net
+Priority: optional
+Standards-Version: 3.9.2
+Build-Depends: debhelper (>= 9), gcc, g++, automake, autoconf, libtool, make,
+ libncurses5-dev, flex, bison, patch, libtool, autoconf,
+ libxml2-dev, cmake
+
+Package: wanpipe
+Section: net
+Priority: optional
+Architecture: any
+Essential: no
+depends: libncurses5, libc6, perl, ${shlibs:Depends}, ${misc:Depends}
+Pre-Depends: 
+Recommends:   
+Suggests:  
+Conflicts: 
+Replaces: 
+Provides: wanpipe
+Description: WANPIPE Voice/WAN Routing/API solution
+ WANPIPE S-series is a family of intelligent multi-protocol WAN adapters that 
+ support data transfer rates up to 4Mbps. All WAN protocols supported by WANPIPE 
+ are implemented in firmware and run on the card. An advantage of an intelligent 
+ adapter is that it offloads the system CPU and improves stability.
+
+Package: wanpipe-dkms
+Section: net
+Priority: optional
+Architecture: all
+Essential: no
+depends: libncurses5, libc6, perl, ${misc:Depends}, dkms, linux-headers
+Pre-Depends: 
+Recommends:   
+Suggests:  
+Conflicts: 
+Replaces: 
+Description: WANPIPE kernel modules
