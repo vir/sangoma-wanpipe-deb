@@ -21,7 +21,7 @@ function upload_package()
 	pushd ..
 	dupload -c -d --to $1 ${PKG}_*.changes
 	P=`grep '\.dsc ' *.upload | sed 's/. \(.*\)\.dsc .*/\1/'`
-#	echo "name=${P//+/%2B}&queue=$1&start=1" | POST -c "application/x-www-form-urlencoded" http://builder.ctm.ru/control/control.pl | grep -iE '^Build|error'
+	echo "name=${P//+/%2B}&queue=$1&start=1" | POST -c "application/x-www-form-urlencoded" http://builder.ctm.ru/control/control.pl | grep -iE '^Build|error'
 	rm -f  ${PKG}_*$2*
 	popd
 }
@@ -44,6 +44,7 @@ fi
 if [ ! -f ${PKG}-${VER}/Makefile ]
 then
 	tar xzf ${PKG}_${VER}.orig.tar.gz
+	chmod -R a+r ${PKG}-${VER}
 fi
 cd ${PKG}-${VER}/
 
@@ -55,12 +56,12 @@ else
 fi
 
 #build unstable source package
-build_package sid
-upload_package vir sid
+#build_package sid
+#upload_package vir sid
 
 # build testing source package
-#build_package wheezy
-#upload_package vir wheezy
+build_package wheezy
+upload_package vir wheezy
 
 # build stable source package
 #build_package squeeze

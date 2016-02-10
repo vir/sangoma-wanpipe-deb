@@ -1,5 +1,8 @@
 #!/usr/bin/make -f
 
+# temp. workaround #808558 until we have reprepro 4.17.0-1
+DEB_BUILD_OPTIONS=noddebs
+
 DEB_VERSION := $(shell dpkg-parsechangelog | egrep '^Version:' | cut -f 2 -d ' ')
 
 %:
@@ -14,6 +17,7 @@ override_dh_auto_build:
 # all from "install" target except "install_kmod" nd with extra "install_kmod_src"
 override_dh_auto_install:
 	make install_etc install_util install_inc install_kmod_src DESTDIR=$(CURDIR)/debian/tmp/ KMOD_SRC_DIR=/usr/src/wanpipe-$(DEB_VERSION) DOCS_DIR=/usr/share/doc/wanpipe
+	perl -pi.bak -e "s/__VERSION__/$(DEB_VERSION)/" $(CURDIR)/debian/tmp/usr/src/wanpipe-$(DEB_VERSION)/dkms.conf
 
 override_dh_auto_clean:
 	make cleanup_local clean_util

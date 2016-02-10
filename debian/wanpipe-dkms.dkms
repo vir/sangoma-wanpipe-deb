@@ -1,14 +1,14 @@
 PACKAGE_NAME="wanpipe"
-PACKAGE_VERSION=7.0.16
-MAKE[0]="'make' -C ${dkms_tree}/${PACKAGE_NAME}/${PACKAGE_VERSION}/source all_kmod KVER=$kernelver"
-CLEAN="'make' -C ${dkms_tree}/${PACKAGE_NAME}/${PACKAGE_VERSION}/source clean_kmod"
-BUILT_MODULE_LOCATION[0]="patches/kdrivers/src/net/"
-BUILT_MODULE_LOCATION[1]="patches/kdrivers/src/net/"
-BUILT_MODULE_LOCATION[2]="patches/kdrivers/src/net/"
-BUILT_MODULE_LOCATION[3]="patches/kdrivers/src/net/"
-BUILT_MODULE_LOCATION[4]="patches/kdrivers/src/net/"
-BUILT_MODULE_LOCATION[5]="patches/kdrivers/src/net/"
-BUILT_MODULE_LOCATION[6]="patches/kdrivers/src/net/"
+PACKAGE_VERSION=__VERSION__
+MAKE[0]="'make' -C ${dkms_tree}/${PACKAGE_NAME}/${PACKAGE_VERSION}/build all_kmod KVER=$kernelver"
+CLEAN="'make' -C ${dkms_tree}/${PACKAGE_NAME}/${PACKAGE_VERSION}/build clean_kmod"
+BUILT_MODULE_LOCATION[0]="${dkms_tree}/${PACKAGE_NAME}/${PACKAGE_VERSION}/build/patches/kdrivers/src/net/"
+BUILT_MODULE_LOCATION[1]="${dkms_tree}/${PACKAGE_NAME}/${PACKAGE_VERSION}/build/patches/kdrivers/src/net/"
+BUILT_MODULE_LOCATION[2]="${dkms_tree}/${PACKAGE_NAME}/${PACKAGE_VERSION}/build/patches/kdrivers/src/net/"
+BUILT_MODULE_LOCATION[3]="${dkms_tree}/${PACKAGE_NAME}/${PACKAGE_VERSION}/build/patches/kdrivers/src/net/"
+BUILT_MODULE_LOCATION[4]="${dkms_tree}/${PACKAGE_NAME}/${PACKAGE_VERSION}/build/patches/kdrivers/src/net/"
+BUILT_MODULE_LOCATION[5]="${dkms_tree}/${PACKAGE_NAME}/${PACKAGE_VERSION}/build/patches/kdrivers/src/net/"
+BUILT_MODULE_LOCATION[6]="${dkms_tree}/${PACKAGE_NAME}/${PACKAGE_VERSION}/build/patches/kdrivers/src/net/"
 DEST_MODULE_LOCATION[0]=/extra
 DEST_MODULE_LOCATION[1]=/extra
 DEST_MODULE_LOCATION[2]=/extra
