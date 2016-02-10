@@ -14,7 +14,7 @@ Architecture: any
 Essential: no
 depends: libncurses5, libc6, perl, ${shlibs:Depends}, ${misc:Depends}
 Pre-Depends: 
-Recommends:   
+Recommends: wanpipe-dkms
 Suggests:  
 Conflicts: 
 Replaces: 

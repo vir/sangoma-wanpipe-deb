@@ -1,3 +1,27 @@
+wanpipe (7.0.16-9) UNRELEASED; urgency=medium
+
+  * Kernel modules location fix
+
+ -- Vasily i. Redkin <vir@ctm.ru>  Wed, 10 Feb 2016 16:38:16 +0300
+
+wanpipe (7.0.16-8) UNRELEASED; urgency=medium
+
+  * Fix modules path in dkms conf
+
+ -- Vasily i. Redkin <vir@ctm.ru>  Wed, 10 Feb 2016 16:12:30 +0300
+
+wanpipe (7.0.16-7) UNRELEASED; urgency=medium
+
+  * Fix version string in dkms.conf finally
+
+ -- Vasily i. Redkin <vir@ctm.ru>  Wed, 10 Feb 2016 15:59:38 +0300
+
+wanpipe (7.0.16-6) UNRELEASED; urgency=medium
+
+  * Fix version string in dkms.conf again
+
+ -- Vasily i. Redkin <vir@ctm.ru>  Wed, 10 Feb 2016 15:59:24 +0300
+
 wanpipe (7.0.16-5) UNRELEASED; urgency=medium
 
   * Fix version string in dkms.conf

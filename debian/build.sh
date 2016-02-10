@@ -59,15 +59,15 @@ fi
 #build_package sid
 #upload_package vir sid
 
-# build testing source package
+build_package jessie
+upload_package vir jessie
+
 build_package wheezy
 upload_package vir wheezy
 
-# build stable source package
-#build_package squeeze
-#upload_package vir squeeze
+build_package squeeze
+upload_package vir squeeze
 
-# build old-stable source package
 #build_package lenny
 #upload_package vir lenny
 
